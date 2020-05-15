@@ -86,7 +86,7 @@ const ball = {
   x: canvas.width / 2,
   y: canvas.height - 100,
   up: -25,
-  down: 1,
+  down: 2,
   speed: 0,
 
   draw: function () {
@@ -102,7 +102,7 @@ const ball = {
     // ball upper Bound collision detection
     if (this.y + this.h / 2 <= canvas.height - 125) {
       this.y = canvas.height - this.h - 125;
-      ring.downSpeed = 20;
+      ring.downSpeed = 10;
       score.value += 10;
       score.best = Math.max(score.value, score.best);
       localStorage.setItem("best", score.best);
@@ -190,7 +190,7 @@ const ring = {
   update: function () {
 
     if (gameState.current != gameState.game) return;
-    if (this.position.length == 0 || this.position[this.position.length - 1].y > 175) {
+    if (this.position.length == 0 || this.position[this.position.length - 1].y > 225) {
       this.position.push({
         x: 160,
         y: -75,
@@ -221,7 +221,7 @@ const ring = {
 
 
     }
-    this.downSpeed = 0;
+    this.downSpeed = 1;
 
   },
 
@@ -363,7 +363,5 @@ function loop() {
   frames++;
   requestAnimationFrame(loop);
 
-
 }
-
-requestAnimationFrame(loop);
+loop();
