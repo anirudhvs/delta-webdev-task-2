@@ -356,7 +356,11 @@ canvas.addEventListener('click', (evt) => {
 });
 
 
-
+window.onkeydown = (e)=>{
+	if(e.keyCode === 32)
+		if (gameState.current == gameState.game) 
+    		ball.jump();
+}
 function loop() {
   update();
   draw();
